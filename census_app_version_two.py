@@ -50,6 +50,8 @@ st.set_option('deprecation.showPyplotGlobalUse',False)# Write the code to design
 st.title('Census Data Visualisation App')
 st.sidebar.subheader('Census Data Set')
 # Using the 'if' statement, display raw data on the click of the checkbox.
+st.write("Number of Rows: ", census_df.shape[0]) 
+st.write("Number of Columns: ", census_df.shape[1])
 if st.sidebar.checkbox('Show raw data'):
 	st.subheader('Census Data set')
 	st.dataframe(census_df)
@@ -77,7 +79,7 @@ if 'Pie Chart' in plot_list:
 if 'Box Plot' in plot_list:
 	boxplot_data = st.sidebar.multiselect("Select the column for grouping the distribution of records in the boxplot",('income', 'gender'))
 	for i in boxplot_data:
-		plt.boxplot(census_df['hours-per-week'], y = census_df[i])
+		sns.boxplot(census_df['hours-per-week'], y = census_df[i])
 		st.pyplot()
 # Display count plot using seaborn module and 'st.pyplot()' 
 if 'Count Plot' in plot_list:
